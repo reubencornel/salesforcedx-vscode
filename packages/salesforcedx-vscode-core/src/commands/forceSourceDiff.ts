@@ -37,7 +37,8 @@ export class ForceSourceDiffExecutor extends SfdxCommandletExecutor<{
       .withDescription(nls.localize('force_source_diff_text'))
       .withArg('force:source:diff')
       .withLogName('force_source_diff')
-      .withFlag('--sourcepath', data.filePath);
+      .withFlag('--sourcepath', data.filePath)
+      .withJson();
     return commandBuilder.build();
   }
 
@@ -71,9 +72,9 @@ export class ForceSourceDiffExecutor extends SfdxCommandletExecutor<{
         // TODO: add a custom type here.
         // tslint:disable-next-line:no-shadowed-variable
         const response = JSON.parse(sanitized);
-        const remote = vscode.Uri.parse(response.remote);
-        const local = vscode.Uri.parse(response.local);
-        const filename = response.fileName;
+        const remote = vscode.Uri.parse(response.result.remote);
+        const local = vscode.Uri.parse(response.result.local);
+        const filename = response.result.fileName;
         let defaultUsernameorAlias: string | undefined;
         if (hasRootWorkspace()) {
           defaultUsernameorAlias = await OrgAuthInfo.getDefaultUsernameOrAlias(

@@ -9,13 +9,13 @@ import {
 } from '@salesforce/salesforcedx-utils-vscode/out/src/types';
 import * as vscode from 'vscode';
 import { nls } from '../messages';
+// import { request } from 'http';
 import {
   SfdxCommandlet,
   SfdxCommandletExecutor,
   SfdxWorkspaceChecker
 } from './commands';
-import { request } from 'http';
-import { start } from 'applicationinsights';
+// import { start } from 'applicationinsights';
 
 export interface ApiInput {
   method: string;
@@ -26,7 +26,7 @@ export interface ApiInput {
 
 class ForceRestApiExecutor extends SfdxCommandletExecutor<{}> {
   public build(data: ApiInput): Command {
-    let command = new SfdxCommandBuilder()
+    const command = new SfdxCommandBuilder()
       .withDescription(nls.localize('force_rest_api_text'))
       .withArg('force:data:soql:query')
       .withFlag('--query', `'select id from Account'`)
@@ -149,17 +149,20 @@ function getTextLine(document: vscode.TextDocument, linePosition: vscode.Positio
 
 function parseStringBody(body: string): Result<ApiInput> {
   // The first line should be METHOD<SPACE>URL
-  let methodName_body: Result<[string, string]> = findMethod(body); // methodName, restOfBody
+  // tslint:disable-next-line:variable-name
+  const methodName_body: Result<[string, string]> = findMethod(body); // methodName, restOfBody
   if (isError(methodName_body)) {
     return methodName_body;
   }
 
-  let uri_body: Result<[string, string]> = findUri(methodName_body[1]);
+  // tslint:disable-next-line:variable-name
+  const uri_body: Result<[string, string]> = findUri(methodName_body[1]);
   if (isError(uri_body)) {
     return uri_body;
   }
 
-  let headers_body: Result<[string, string]> = findHeaders(uri_body[1]);
+  // tslint:disable-next-line:variable-name
+  const headers_body: Result<[string, string]> = findHeaders(uri_body[1]);
   if (isError(headers_body)) {
     return headers_body;
   }
@@ -201,7 +204,7 @@ function findHeaders(body: string): Result<[string, string]> {
   let returnString = '';
   if (headersMap.size > 0) {
     returnString = '{';
-    for (let entry of headersMap.entries()) {
+    for (const entry of headersMap.entries()) {
       returnString = returnString + '"' + entry[0] + '":"' + entry[1] + '",';
     }
 

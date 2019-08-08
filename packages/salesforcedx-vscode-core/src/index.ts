@@ -36,6 +36,7 @@ import {
   forceOrgDisplay,
   forceOrgOpen,
   forceProjectWithManifestCreate,
+  forceRestApi,
   forceSfdxProjectCreate,
   forceSourceDelete,
   forceSourceDeployManifest,
@@ -241,6 +242,10 @@ function registerCommands(
     forceOrgDisplay,
     { flag: '--targetusername' }
   );
+  const forceRestApiCmd = vscode.commands.registerCommand(
+    'sfdx.force.rest.api',
+    forceRestApi
+  );
   const forceDataSoqlQueryInputCmd = vscode.commands.registerCommand(
     'sfdx.force.data.soql.query.input',
     forceDataSoqlQuery
@@ -310,6 +315,7 @@ function registerCommands(
     forceAuthLogoutAllCmd,
     forceDataSoqlQueryInputCmd,
     forceDataSoqlQuerySelectionCmd,
+    forceRestApiCmd,
     forceOrgCreateCmd,
     forceOrgOpenCmd,
     forceSourceDeleteCmd,

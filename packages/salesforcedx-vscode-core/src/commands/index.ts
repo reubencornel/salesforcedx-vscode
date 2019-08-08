@@ -19,6 +19,7 @@ export { forceAuthWebLogin } from './forceAuthWebLogin';
 export { forceAuthDevHub } from './forceAuthDevHub';
 export { forceApexTestRun } from './forceApexTestRun';
 export { forceDataSoqlQuery } from './forceDataSoqlQuery';
+export { forceRestApi } from './forceRestApi';
 export { forceOrgCreate } from './forceOrgCreate';
 export { forceOrgOpen } from './forceOrgOpen';
 export { forceSourceDelete } from './forceSourceDelete';

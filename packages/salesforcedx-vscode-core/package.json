@@ -313,6 +313,10 @@
           "when": "sfdx:project_opened"
         },
         {
+          "command": "sfdx.force.rest.api",
+          "when": "sfdx:project_opened"
+        },
+        {
           "command": "sfdx.force.data.soql.query.input",
           "when": "sfdx:project_opened && !editorHasSelection"
         },
@@ -558,6 +562,10 @@
       {
         "command": "sfdx.force.data.soql.query.input",
         "title": "%force_data_soql_query_input_text%"
+      },
+      {
+        "command": "sfdx.force.rest.api",
+        "title": "%force_rest_api_text%"
       },
       {
         "command": "sfdx.force.data.soql.query.selection",

@@ -142,6 +142,7 @@ export const messages = {
   force_debugger_stop_text: 'SFDX: Stop Apex Debugger Session',
   force_debugger_stop_none_found_text: 'No Apex Debugger session found.',
   force_data_soql_query_input_text: 'SFDX: Execute SOQL Query...',
+  force_rest_api_text: 'SFDC: Execute Rest API',
   force_data_soql_query_selection_text:
     'SFDX: Execute SOQL Query with Currently Selected Text',
   parameter_gatherer_enter_soql_query: 'Enter the SOQL query',
